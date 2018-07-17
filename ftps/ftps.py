@@ -135,3 +135,15 @@ class FTPS(object):
             LOGGER.debug('Uploading file: %s -> %s', local_filename, url)
             self.perform()
         self.reset()
+
+        def login(self, username, password):
+            """Login to server when username:password does not work as part of url.
+            
+            :param username: Username to connect/login as.
+            :type username: str
+            :param password: Password.
+            :type password: str
+            
+            """
+            self.client.setopt(pycurl.USERNAME, username)
+            self.client.setopt(pycurl.PASSWORD, password)
